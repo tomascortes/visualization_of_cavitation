@@ -1,6 +1,7 @@
 import pygame as pg
 from inputbox import InputBox
 import const as CONST
+from random import randint
 
 pg.init()
 width  = 900
@@ -125,7 +126,7 @@ def main():
         pg.draw.line(screen, (255,255,255), (width*0.4, 3.5*height/5), (width, 3.5*height/5), 2)
 
 
-        #las ultimas weaitas de h1 y h2
+        #las ultimas weaitas de h1 y h2 que dicen la altura
         string_webiado  = f'({input_h1.value}) h1-> ' if input_h1.value >= 10 else f'  ({input_h1.value}) h1->'
         
         text_h1 = FONT.render(string_webiado, True, (255,255,255))
@@ -135,6 +136,14 @@ def main():
         text_h2 = FONT.render(f'<-h2 ({input_h2.value})', True, (255,255,255))
         text_rect_h2 = text_h2.get_rect(x=pos_tub_y[0] + 130, y=pos_tub_y[1] - 10 )
         screen.blit(text_h2, text_rect_h2)
+
+        if input_h2.value > 12:
+            center = [pos_tub_y[0] + 50 , pos_tub_y[1]]
+            for i in range(20):
+                rando = [randint(-40,70), randint(0,20)]
+                pos = [x + y for x, y in zip(center, rando)]
+                pg.draw.circle(screen, (255,255,255), pos, randint(2,7))
+
 
 
         pg.display.flip()
