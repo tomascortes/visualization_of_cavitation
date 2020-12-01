@@ -1,10 +1,10 @@
 import pygame as pg
 class InputBox:
 
-    def __init__(self, x, y, w, h, max_value, min_value, text=''):
+    def __init__(self, x, y, w, h, max_value, min_value, text='', size = 32, new_w=False):
         self.COLOR_INACTIVE = pg.Color('lightskyblue3')
         self.COLOR_ACTIVE = pg.Color('dodgerblue2')
-        self.FONT = pg.font.Font(None, 32)
+        self.FONT = pg.font.Font(None, size)
 
         self.rect = pg.Rect(x, y, w, h)
         self.color = self.COLOR_INACTIVE
@@ -14,6 +14,8 @@ class InputBox:
         self.value = int(text)
         self.max_value = max_value
         self.min_value = min_value
+        self.new_w = new_w
+        
 
     def handle_event(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
@@ -40,8 +42,9 @@ class InputBox:
 
     def update(self):
         # Resize the box if the text is too long.
-        width = max(200, self.txt_surface.get_width()+10)
-        self.rect.w = width
+        if not self.new_w:
+            width = max(200, self.txt_surface.get_width()+10)
+            self.rect.w = width
 
     def draw(self, screen):
         # Blit the text.
