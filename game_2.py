@@ -1,6 +1,6 @@
 import pygame as pg
-from inputbox import InputBox
-import const as CONST
+from archivos.inputbox import InputBox
+import archivos.const as CONST
 from random import randint
 
 pg.init()
@@ -93,7 +93,10 @@ def main():
 
 
        
-        
+        #BOMBA
+        bomba_img = pg.image.load('img/bomba.png')
+        bomba_img = pg.transform.scale(bomba_img, (200, 100))
+        screen.blit(bomba_img, (3.5*width/8,height/2 - 50)) 
 
         #dibujar radio 1
         pos_estanque = (
@@ -114,7 +117,7 @@ def main():
         pg.draw.rect(screen, celeste, pos_estanque_2)
 
         #linea que muestra h=0 (la hacemos al final para que este sobre el dibujo)
-        pg.draw.line(screen, (255,255,255), (width*0.4, height/2), (width, height/2), 2)
+        pg.draw.line(screen, (255,255,255), (5*width/8, height/2), (width, height/2), 2)
 
 
         #las ultimas weaitas de h1 y h2 que dicen la altura

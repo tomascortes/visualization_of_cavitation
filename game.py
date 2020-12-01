@@ -1,6 +1,6 @@
 import pygame as pg
-from inputbox import InputBox
-import const as CONST
+from archivos.inputbox import InputBox
+import archivos.const as CONST
 from random import randint
 
 pg.init()
