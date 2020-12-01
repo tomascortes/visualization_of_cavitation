@@ -1,5 +1,6 @@
 import pygame as pg
 from archivos.inputbox import InputBox
+from archivos.cavitacion import funcion_cavitacion_1
 import archivos.const as CONST
 from random import randint
 
@@ -137,7 +138,7 @@ def main():
         text_rect_h2 = text_h2.get_rect(x=pos_tub_y[0] + 130, y=pos_tub_y[1] - 10 )
         screen.blit(text_h2, text_rect_h2)
 
-        if input_h2.value > 12:
+        if funcion_cavitacion_1(input_h1.value, input_h2.value, input_temp):
             center = [pos_tub_y[0] + 50 , pos_tub_y[1]]
             for i in range(20):
                 rando = [randint(-40,70), randint(0,20)]
