@@ -1,5 +1,6 @@
 import pygame as pg
 from archivos.inputbox import InputBox
+from archivos.cavitacion import funcion_cavitacion_2
 import archivos.const as CONST
 from random import randint
 
@@ -141,7 +142,7 @@ def main():
 
 
         ## BUBBLES
-        if input_r2.value > 12:
+        if funcion_cavitacion_2(input_r1.value, input_r2.value, input_p1.value, input_p2.value, input_temp):
             center1 = pos_estanque_2[0] + 45, pos_estanque_2[1] + 10*input_r2.value - 25
             for i in range(15):
                 rando = [randint(-40,20), randint(0,20)]
