@@ -18,8 +18,8 @@ def main():
     input_size_2 = (100,  35)
     input_r1 = InputBox(20, height/5 - 20, input_size[0],  input_size[1], max_value=20, min_value=4, text=CONST.r1_inicial)
     input_r2 = InputBox(20, 2*height/5 - 20, input_size[0],  input_size[1], max_value=30, min_value=4, text=CONST.r2_inicial)
-    input_p1 = InputBox(20, 3*height/5 - 20, input_size_2[0],  input_size_2[1], max_value=30, min_value=4, text=CONST.p1_inicial, new_w=True)
-    input_p2 = InputBox(200, 3*height/5 - 20, input_size_2[0],  input_size_2[1], max_value=30, min_value=4, text=CONST.p2_inicial, new_w=True)
+    input_p1 = InputBox(20, 3*height/5 - 20, input_size_2[0],  input_size_2[1], max_value=10, min_value=0.1, text=CONST.p1_inicial, new_w=True)
+    input_p2 = InputBox(200, 3*height/5 - 20, input_size_2[0],  input_size_2[1], max_value=10, min_value=0.1, text=CONST.p2_inicial, new_w=True)
     input_temp = InputBox(20, 4*height/5 - 20, input_size[0],  input_size[1], max_value=100, min_value=0, text=CONST.temp_inicial)
     input_boxes = [input_r1, input_r2, input_p1, input_p2, input_temp]
 
