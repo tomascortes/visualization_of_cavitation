@@ -20,9 +20,9 @@ def main():
     input_r1 = InputBox(20, height/5 - 20, input_size[0],  input_size[1], max_value=20, min_value=4, text=CONST.r1_inicial)
     input_r2 = InputBox(20, 2*height/5 - 20, input_size[0],  input_size[1], max_value=30, min_value=4, text=CONST.r2_inicial)
     input_p1 = InputBox(20, 3*height/5 - 20, input_size_2[0],  input_size_2[1], max_value=10, min_value=0.1, text=CONST.p1_inicial, new_w=True)
-    input_p2 = InputBox(200, 3*height/5 - 20, input_size_2[0],  input_size_2[1], max_value=10, min_value=0.1, text=CONST.p2_inicial, new_w=True)
+    input_v1 = InputBox(200, 3*height/5 - 20, input_size_2[0],  input_size_2[1], max_value=10, min_value=0.1, text=CONST.p2_inicial, new_w=True)
     input_temp = InputBox(20, 4*height/5 - 20, input_size[0],  input_size[1], max_value=100, min_value=0, text=CONST.temp_inicial)
-    input_boxes = [input_r1, input_r2, input_p1, input_p2, input_temp]
+    input_boxes = [input_r1, input_r2, input_p1, input_v1, input_temp]
 
     
 
@@ -70,8 +70,8 @@ def main():
         text_p_1 = FONT.render(f'Presion 1', True, pg.Color('lightskyblue3'), (30, 30, 30))
         text_rect_p_1 = text_radio_2.get_rect(x=20, y=2.5*height/5)
 
-        text_p_2 = FONT.render(f'Presion 2', True, pg.Color('lightskyblue3'), (30, 30, 30))
-        text_rect_p_2 = text_radio_2.get_rect(x=200, y=2.5*height/5)
+        text_v_1 = FONT.render(f'Velocidad 1', True, pg.Color('lightskyblue3'), (30, 30, 30))
+        text_rect_v_1 = text_v_1.get_rect(x=200, y=2.5*height/5)
         
         text_temp = FONT.render(f'Temperatura = {input_temp.value}', True, pg.Color('lightskyblue3'), (30, 30, 30))
         text_rect_temp = text_temp.get_rect(x=20, y=3.5*height/5)
@@ -82,12 +82,14 @@ def main():
         text_r0 = FONT.render('r=0', True, (255,255,255), (30, 30, 30))
         text_rect_r0 = text_r0.get_rect(x=width*0.9 + 20, y= height/2 - 30)
 
+        input_v2 = (input_v1.value * (input_r1.value**2)) / (input_r2.value**2)
+        input_p2 = round(input_p1.value + ((input_v1.value**2) - (input_v2**2))*(1/2), 2)
         
         
         screen.blit(text_radio_1, text_rect_alt_1)
         screen.blit(text_radio_2, text_rect_alt_2)
         screen.blit(text_p_1, text_rect_p_1)
-        screen.blit(text_p_2, text_rect_p_2)
+        screen.blit(text_v_1, text_rect_v_1)
         screen.blit(text_temp, text_rect_temp)
         screen.blit(text_button, text_rect_button)
         screen.blit(text_r0, text_rect_r0)
@@ -136,13 +138,14 @@ def main():
         text_rect_r2 = text_r2.get_rect(x=pos_estanque_2[0] + 120, y=pos_estanque_2[1] + 10*input_r2.value - 10)
         screen.blit(text_r2, text_rect_r2)
 
-        text_p2 = FONT.render(f'p2 = {input_p2.value}', True, (255,255,255))
+        text_p2 = FONT.render(f'p2 = {input_p2}', True, (255,255,255))
         text_rect_p2 = text_p2.get_rect(x=pos_estanque_2[0], y=pos_estanque_2[1] - 30)
         screen.blit(text_p2, text_rect_p2)
 
 
         ## BUBBLES
-        if funcion_cavitacion_2(input_r1.value, input_r2.value, input_p1.value, input_p2.value, input_temp):
+        cav, pv = funcion_cavitacion_2(input_p2, input_v2, input_temp.value)
+        if cav:
             center1 = pos_estanque_2[0] + 45, pos_estanque_2[1] + 10*input_r2.value - 25
             for i in range(15):
                 rando = [randint(-40,20), randint(0,20)]
@@ -161,7 +164,9 @@ def main():
                 pos2 = [x + y for x, y in zip(center2, rando2)]
                 pg.draw.circle(screen, (255,255,255), pos2, randint(2,7))
 
-
+        text_pv = FONT.render(f'pv = {pv}', True, (255,255,255))
+        text_rect_pv = text_pv.get_rect(x=width/2, y=3*height/4)
+        screen.blit(text_pv, text_rect_pv)
 
         pg.display.flip()
         clock.tick(30)

@@ -138,7 +138,7 @@ def main():
         text_rect_h2 = text_h2.get_rect(x=pos_tub_y[0] + 130, y=pos_tub_y[1] - 10 )
         screen.blit(text_h2, text_rect_h2)
 
-        if funcion_cavitacion_1(input_h1.value, input_h2.value, input_temp):
+        if funcion_cavitacion_1(input_h1.value, input_h2.value, input_temp.value):
             center = [pos_tub_y[0] + 50 , pos_tub_y[1]]
             for i in range(20):
                 rando = [randint(-40,70), randint(0,20)]
