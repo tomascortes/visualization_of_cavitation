@@ -38,7 +38,6 @@ def main():
                 # button the game is terminated 
                 mouse = pg.mouse.get_pos()
                 if 20 <= mouse[0] <= 200 and 3.5*height/5 -10 <= mouse[1] <= 3.5*height/5+30: 
-                    print(mouse[0], mouse[1])
                     for i_box in input_boxes:
                         i_box.define_value()
 
@@ -138,7 +137,9 @@ def main():
         text_rect_h2 = text_h2.get_rect(x=pos_tub_y[0] + 130, y=pos_tub_y[1] - 10 )
         screen.blit(text_h2, text_rect_h2)
 
-        if funcion_cavitacion_1(input_h1.value, input_h2.value, input_temp.value):
+        cav, pv = funcion_cavitacion_1(input_h1.value, input_h2.value, input_temp.value)
+
+        if cav:
             center = [pos_tub_y[0] + 50 , pos_tub_y[1]]
             for i in range(20):
                 rando = [randint(-40,70), randint(0,20)]
