@@ -21,7 +21,8 @@ def main():
     input_temp = InputBox(20, 3*height/5, input_size[0],  input_size[1], max_value=100, min_value=0, text=CONST.temp_inicial)
     input_radio = InputBox(20, 4*height/5, input_size[0],  input_size[1], max_value=4, min_value=1, text=CONST.radio_inicial)
     input_boxes = [input_h1, input_h2, input_temp]
-
+    p_a = 0
+    p_2 = 0
     
 
     #variables a usar despues
@@ -75,6 +76,16 @@ def main():
 
         text_h0 = FONT.render('h=0', True, (255,255,255), (30, 30, 30))
         text_rect_h0 = text_h0.get_rect(x=width*0.4 + 20, y=3.5*height/5 - 30)
+
+
+        #presion label
+        label_extra1 = FONT.render(f'presion de vapor temp = {round(p_a,2)}', True, pg.Color('lightskyblue3'), (30, 30, 30))
+        text_rect_label_extra1 = label_extra1.get_rect(x=20, y=4*height/5)
+
+        label_extra2 = FONT.render(f'presion2 = {p_2}', True, pg.Color('lightskyblue3'), (30, 30, 30))
+        text_rect_label_extra2 = label_extra2.get_rect(x=20, y=4.5*height/5)
+        screen.blit(label_extra1, text_rect_label_extra1)
+        screen.blit(label_extra2, text_rect_label_extra2)
 
         
         
@@ -137,7 +148,7 @@ def main():
         text_rect_h2 = text_h2.get_rect(x=pos_tub_y[0] + 130, y=pos_tub_y[1] - 10 )
         screen.blit(text_h2, text_rect_h2)
 
-        cav, pv = funcion_cavitacion_1(input_h1.value, input_h2.value, input_temp.value)
+        cav, p_a, p_2 = funcion_cavitacion_1(input_h1.value, input_h2.value, input_temp.value)
 
         if cav:
             center = [pos_tub_y[0] + 50 , pos_tub_y[1]]
