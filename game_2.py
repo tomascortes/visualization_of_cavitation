@@ -98,8 +98,8 @@ def main():
        
         #BOMBA
         bomba_img = pg.image.load('img/bomba.png')
-        bomba_img = pg.transform.scale(bomba_img, (200, 100))
-        screen.blit(bomba_img, (3.5*width/8,height/2 - 50)) 
+        bomba_img = pg.transform.scale(bomba_img, (150, 100))
+        screen.blit(bomba_img, (3.65*width/8,height/2 - 50)) 
 
         #dibujar radio 1
         pos_estanque = (
@@ -126,7 +126,7 @@ def main():
         #las ultimas weaitas de h1 y h2 que dicen la altura
         string_webiado  = f'({input_r1.value}) r1-> ' if input_r1.value >= 10 else f'  ({input_r1.value}) r1->'
         
-        text_r1 = FONT.render(string_webiado, True, (255,255,255))
+        text_r1 = FONT.render(string_webiado, True, (100,230,230))
         text_rect_r1 = text_r1.get_rect(x=pos_estanque[0] - 100, y=pos_estanque[1] + 10*input_r1.value - 10)
         screen.blit(text_r1, text_rect_r1)
 
@@ -164,7 +164,7 @@ def main():
                 pos2 = [x + y for x, y in zip(center2, rando2)]
                 pg.draw.circle(screen, (255,255,255), pos2, randint(2,7))
 
-        text_pv = FONT.render(f'pv = {pv}', True, (255,255,255))
+        text_pv = FONT.render(f'Presion de vapor = {round(pv, 4)}', True, (255,255,255))
         text_rect_pv = text_pv.get_rect(x=width/2, y=3*height/4)
         screen.blit(text_pv, text_rect_pv)
 
