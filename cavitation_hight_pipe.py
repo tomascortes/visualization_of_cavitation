@@ -59,19 +59,19 @@ def main():
 
         #dibuja texto input
         #texto sobre cajas de input
-        text_altura_1 = FONT.render(f'altura h1 = {input_h1.value}', True, pg.Color('lightskyblue3'), (30, 30, 30))
+        text_altura_1 = FONT.render(f'Hight h1 = {input_h1.value}', True, pg.Color('lightskyblue3'), (30, 30, 30))
         text_rect_alt_1 = text_altura_1.get_rect(x=20, y=0.5*height/5)
         
-        text_altura_2 = FONT.render(f'altura h2 = {input_h2.value}', True, pg.Color('lightskyblue3'), (30, 30, 30))
+        text_altura_2 = FONT.render(f'Hight h2 = {input_h2.value}', True, pg.Color('lightskyblue3'), (30, 30, 30))
         text_rect_alt_2 = text_altura_2.get_rect(x=20, y=1.5*height/5)
         
-        text_temp = FONT.render(f'temperatura = {input_temp.value}', True, pg.Color('lightskyblue3'), (30, 30, 30))
+        text_temp = FONT.render(f'temperature = {input_temp.value}', True, pg.Color('lightskyblue3'), (30, 30, 30))
         text_rect_temp = text_temp.get_rect(x=20, y=2.5*height/5)
         
         # text_radio = FONT.render('radio', True, pg.Color('lightskyblue3'), (30, 30, 30))
         # text_rect_radio = text_radio.get_rect(x=20, y=3.5*height/5)
 
-        text_button = FONT.render('       Calcular     ', True, (0,0,0),celeste)
+        text_button = FONT.render('       Calculate     ', True, (0,0,0),celeste)
         text_rect_button = text_button.get_rect(x=20, y=3.5*height/5)
 
         text_h0 = FONT.render('h=0', True, (255,255,255), (30, 30, 30))
@@ -79,10 +79,10 @@ def main():
 
 
         #presion label
-        label_extra1 = FONT.render(f'presion de vapor temp = {round(p_a,2)}', True, pg.Color('lightskyblue3'), (30, 30, 30))
+        label_extra1 = FONT.render(f'presure of steam temp = {round(p_a,2)}', True, pg.Color('lightskyblue3'), (30, 30, 30))
         text_rect_label_extra1 = label_extra1.get_rect(x=20, y=4*height/5)
 
-        label_extra2 = FONT.render(f'presion2 = {p_2}', True, pg.Color('lightskyblue3'), (30, 30, 30))
+        label_extra2 = FONT.render(f'pretion 2 = {round(p_2)}', True, pg.Color('lightskyblue3'), (30, 30, 30))
         text_rect_label_extra2 = label_extra2.get_rect(x=20, y=4.5*height/5)
         screen.blit(label_extra1, text_rect_label_extra1)
         screen.blit(label_extra2, text_rect_label_extra2)

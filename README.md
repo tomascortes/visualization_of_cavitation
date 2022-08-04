@@ -1,11 +1,15 @@
 
 # README
 
-Visualization of cavitation in pipes in height
+Requirments:
+pygame
 
-this program needs the library pygame.
+Visualization of cavitation in a pipe, produce by low pressure on height
 
-To install pygame you need to '$pip install pygame' on the console.
+![Alt text](/img/cavitation_hight_pipe_normal.jpg?raw=true "Without cavitation")
+
+
+![Alt text](/img/cavitation_hight_pipe.jpg?raw=true "Cavitation produced by low pressure")
 
 To execute the program run:
-python game.py
+python cavitation_hight_pipe.py
